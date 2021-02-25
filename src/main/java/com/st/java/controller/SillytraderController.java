@@ -1,5 +1,6 @@
 package com.st.java.controller;
 
+import com.google.gson.Gson;
 import com.st.java.model.RegisterForm;
 import com.st.java.model.RegisterResult;
 import com.st.java.service.UserService;
@@ -17,6 +18,7 @@ public class SillytraderController {
     @ResponseBody
     @PostMapping("/register")
     public RegisterResult register(@RequestBody RegisterForm form) {
+        log.info("received register request: " + new Gson().toJson(form));
         return userService.register(form);
     }
 
